@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apocaliss - Discord Bot</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: #0f0f0f;
+      color: #f1f1f1;
+      line-height: 1.6;
+    }
+
+    header {
+      background: radial-gradient(circle at top, #2c2c2c, #0f0f0f);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .logo {
+      width: 100px;
+      margin-bottom: 1rem;
+      border-radius: 50%;
+      border: 2px solid #9b59b6;
+      box-shadow: 0 0 15px #9b59b6;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    nav h1 {
+      font-size: 2rem;
+      color: #9b59b6;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #f1f1f1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #9b59b6;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #9b59b6;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      margin-top: 1.5rem;
+    }
+
+    .btn:hover {
+      background: #8e44ad;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border: 1px solid #333;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 300px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      place-items: center;
+    }
+
+    .image-item {
+      max-width: 220px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .image-item img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid #333;
+    }
+
+    .image-item h4 {
+      margin-top: 0.5rem;
+      color: #9b59b6;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background: #1a1a1a;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #9b59b6;
+      text-decoration: none;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 1024px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav h1 {
+        font-size: 1.8rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .card {
+        width: 100%;
+      }
+
+      .hero h2 {
+        font-size: 1.6rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.webp" alt="Logo Apocaliss" class="logo" />
+    <nav>
+      <h1>Apocaliss</h1>
+      <ul>
+        <li><a href="#features">Caratteristiche</a></li>
+        <li><a href="#images">Immagini</a></li>
+        <li><a href="#invite">Invita</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h2>Il bot definitivo per la tua community Discord</h2>
+      <p>Moderazione, divertimento e comandi personalizzati. Tutto in un unico bot potente.</p>
+      <a href="#invite" class="btn">Invita Apocaliss</a>
+    </div>
+  </header>
+
+  <section id="features">
+    <h2>⚙️ Caratteristiche</h2>
+    <div class="features-grid">
+      <div class="card">
+        <h3>🔒 Moderazione</h3>
+        <p>Ban, kick, mute e automoderazione avanzata.</p>
+      </div>
+      <div class="card">
+        <h3>🎉 Giochi</h3>
+        <p>Mini-giochi e comandi per il divertimento con gli amici.</p>
+      </div>
+      <div class="card">
+        <h3>🛠️ Personalizzazione</h3>
+        <p>Configura prefissi, ruoli e reazioni come vuoi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="images">
+    <h2>📷 Pannello Comandi</h2>
+    <p>Alcune schermate delle funzioni di Apocaliss:</p>
+    <div class="image-grid">
+      <div class="image-item">
+        <img src="clear.jpg" alt="Clear Command">
+        <h4>Clear</h4>
+      </div>
+      <div class="image-item">
+        <img src="ticket.jpg" alt="Ticket System">
+        <h4>Ticket</h4>
+      </div>
+      <div class="image-item">
+        <img src="member.jpg" alt="Member Join">
+        <h4>Member</h4>
+      </div>
+      <div class="image-item">
+        <img src="math.jpg" alt="Math Command">
+        <h4>Math</h4>
+      </div>
+      <div class="image-item">
+        <img src="help.jpg" alt="Help Menu">
+        <h4>Help</h4>
+      </div>
+    </div>
+  </section>
+
+  <section id="invite">
+    <h2>🚀 Invita Apocaliss</h2>
+    <p>Porta la potenza di Apocaliss nel tuo server Discord.</p>
+    <a href="https://discord.com/oauth2/authorize?client_id=1039915454489170032&scope=bot%20applications.commands&permissions=2146958847" class="btn">Invita Ora</a>
+  </section>
+
+  <footer id="contact">
+    <p>Creato con ❤️ da Tempestosoh | <a href="https://discord.com/invite/zGUR2wtWSQ">Server di supporto</a></p>
+  </footer>
+</body>
+</html>
