@@ -1,1 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apocaliss - Discord Bot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --violet: #9b59b6;
+      --bg-dark: #0f0f0f;
+      --bg-light: #f2f2f2;
+      --text-light: #f1f1f1;
+      --text-dark: #0f0f0f;
+      --card-dark: #1c1c1c;
+      --card-light: #ffffff;
+      --border: #333;
+      --transition: 0.3s ease;
+    }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    body.light {
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .logo {
+      width: 100px;
+      border-radius: 50%;
+      border: 2px solid var(--violet);
+      box-shadow: 0 0 15px var(--violet);
+      margin-bottom: 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1rem;
+    }
+
+    .nav-title {
+      font-size: 2rem;
+      color: var(--violet);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--violet);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: var(--violet);
+      margin: 4px 0;
+      border-radius: 5px;
+      transition: 0.4s;
+    }
+
+    .hero {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      margin: 1rem auto 1.5rem;
+      max-width: 600px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--violet);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      background: #8e44ad;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .features-grid, .testimonials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .card {
+      background: var(--card-dark);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 300px;
+      transition: transform 0.3s, background 0.3s, color 0.3s;
+    }
+
+    body.light .card {
+      background: var(--card-light);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      place-items: center;
+    }
+
+    .image-item img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+    }
+
+    .image-item h4 {
+      margin-top: 0.5rem;
+      color: var(--violet);
+    }
+
+    .status {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .online {
+      color: #2ecc71;
+    }
+
+    .offline {
+      color: #e74c3c;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background: #1a1a1a;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--violet);
+      text-decoration: none;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--violet);
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .card {
+        width: 90%;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.webp" alt="Logo Apocaliss" class="logo" />
+    <nav>
+      <div class="nav-title">Apocaliss</div>
+      <button class="theme-toggle" id="toggleTheme">🌓</button>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Caratteristiche</a></li>
+        <li><a href="#images">Immagini</a></li>
+        <li><a href="#testimonials">Testimonianze</a></li>
+        <li><a href="#invite">Invita</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h2>Il bot definitivo per la tua community Discord</h2>
+      <p>Moderazione, divertimento e comandi personalizzati. Tutto in un unico bot potente.</p>
+      <a href="#invite" class="btn">Invita Apocaliss</a>
+      <div class="status" id="botStatus">🟢 Online</div>
+    </div>
+  </header>
+
+  <section id="features">
+    <h2>⚙️ Caratteristiche</h2>
+    <div class="features-grid">
+      <div class="card">
+        <h3>🔒 Moderazione</h3>
+        <p>Ban, kick, mute e automoderazione avanzata.</p>
+      </div>
+      <div class="card">
+        <h3>🎉 Giochi</h3>
+        <p>Mini-giochi e comandi per il divertimento con gli amici.</p>
+      </div>
+      <div class="card">
+        <h3>🛠️ Personalizzazione</h3>
+        <p>Configura prefissi, ruoli e reazioni come vuoi.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="images">
+    <h2>📷 Pannello Comandi</h2>
+    <p>Alcune schermate delle funzioni di Apocaliss:</p>
+    <div class="image-grid">
+      <div class="image-item">
+        <img src="clear.jpg" alt="Clear Command">
+        <h4>Clear</h4>
+      </div>
+      <div class="image-item">
+        <img src="ticket.jpg" alt="Ticket System">
+        <h4>Ticket</h4>
+      </div>
+      <div class="image-item">
+        <img src="member.jpg" alt="Member Join">
+        <h4>Member</h4>
+      </div>
+      <div class="image-item">
+        <img src="math.jpg" alt="Math Command">
+        <h4>Math</h4>
+      </div>
+      <div class="image-item">
+        <img src="help.jpg" alt="Help Menu">
+        <h4>Help</h4>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>💬 Testimonianze</h2>
+    <div class="testimonials">
+      <div class="card">
+        <p>"Apocaliss ha trasformato il nostro server!"</p>
+        <strong>- Luca, Admin</strong>
+      </div>
+      <div class="card">
+        <p>"Facile da usare e pieno di funzionalità!"</p>
+        <strong>- Sara, Moderatrice</strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="invite">
+    <h2>🚀 Invita Apocaliss</h2>
+    <p>Porta la potenza di Apocaliss nel tuo server Discord.</p>
+    <a href="https://discord.com/oauth2/authorize?client_id=1039915454489170032&scope=bot%20applications.commands&permissions=2146958847" class="btn">Invita Ora</a>
+  </section>
+
+  <footer id="contact">
+    <p>Creato con ❤️ da Tempestosoh | <a href="https://discord.com/invite/zGUR2wtWSQ">Server di supporto</a></p>
+  </footer>
+
+  <script>
+    // Toggle dark/light mode
+    const toggle = document.getElementById("toggleTheme");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+    });
+
+    // Hamburger menu
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Simulazione stato live bot (da collegare a una API se vuoi)
+    const statusEl = document.getElementById("botStatus");
+    const isOnline = true; // Sostituisci con fetch se usi backend
+
+    statusEl.textContent = isOnline ? "🟢 Online" : "🔴 Offline";
+    statusEl.className = isOnline ? "status online" : "status offline";
+  </script>
+</body>
+</html>
