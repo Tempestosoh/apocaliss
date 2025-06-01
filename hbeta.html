@@ -18,29 +18,24 @@
       --border: #333;
       --transition: 0.3s ease;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       font-family: 'Orbitron', sans-serif;
       background: var(--bg-dark);
       color: var(--text-light);
       transition: var(--transition);
     }
-
     body.light {
       background: var(--bg-light);
       color: var(--text-dark);
     }
-
     #loader {
       position: fixed;
       top: 0;
@@ -55,12 +50,10 @@
       font-size: 2rem;
       z-index: 2000;
     }
-
     header {
       padding: 2rem 1rem 1rem;
       text-align: center;
     }
-
     .logo {
       width: 100px;
       border-radius: 50%;
@@ -68,7 +61,6 @@
       box-shadow: 0 0 15px var(--violet);
       margin-bottom: 1rem;
     }
-
     nav {
       display: flex;
       justify-content: space-between;
@@ -78,17 +70,14 @@
       flex-direction: column;
       gap: 1rem;
     }
-
     .nav-title {
       font-size: 2rem;
       color: var(--violet);
     }
-
     .nav-actions {
       display: flex;
       gap: 0.5rem;
     }
-
     .nav-links {
       display: flex;
       gap: 1.5rem;
@@ -96,23 +85,19 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-
     .nav-links a {
       color: inherit;
       text-decoration: none;
       transition: var(--transition);
     }
-
     .nav-links a:hover {
       color: var(--violet);
     }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-
     .menu-toggle span {
       height: 3px;
       width: 25px;
@@ -121,7 +106,6 @@
       border-radius: 5px;
       transition: 0.4s;
     }
-
     .theme-toggle,
     .lang-toggle {
       font-size: 1.2rem;
@@ -133,27 +117,22 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
     .theme-toggle:hover,
     .lang-toggle:hover {
       background: #8e44ad;
     }
-
     .hero {
       text-align: center;
       margin: 3rem 1rem;
     }
-
     .hero h2 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
-
     .hero p {
       margin: 1rem auto 2rem;
       max-width: 600px;
     }
-
     .btn {
       display: inline-block;
       background: var(--violet);
@@ -165,16 +144,13 @@
       transition: var(--transition);
       margin-top: 1rem;
     }
-
     .btn:hover {
       background: #8e44ad;
     }
-
     section {
       padding: 4rem 2rem;
       text-align: center;
     }
-
     .features-grid,
     .testimonials {
       display: flex;
@@ -182,7 +158,6 @@
       gap: 2rem;
       justify-content: center;
     }
-
     .card {
       background: var(--card-dark);
       border: 1px solid var(--border);
@@ -191,15 +166,12 @@
       width: 300px;
       transition: transform 0.3s, background 0.3s, color 0.3s;
     }
-
     body.light .card {
       background: var(--card-light);
     }
-
     .card:hover {
       transform: scale(1.05);
     }
-
     .image-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -207,44 +179,36 @@
       place-items: center;
       margin-top: 2rem;
     }
-
     .image-item img {
       width: 100%;
       border-radius: 10px;
       border: 2px solid var(--border);
     }
-
     .image-item h4 {
       margin-top: 0.5rem;
       color: var(--violet);
     }
-
     .status {
       font-size: 1.2rem;
       margin-top: 1rem;
       font-weight: bold;
     }
-
     .online {
       color: #2ecc71;
     }
-
     .offline {
       color: #e74c3c;
     }
-
     footer {
       padding: 2rem;
       text-align: center;
       background: #1a1a1a;
       font-size: 0.9rem;
     }
-
     footer a {
       color: var(--violet);
       text-decoration: none;
     }
-
     #scrollTopBtn {
       position: fixed;
       bottom: 30px;
@@ -260,70 +224,10 @@
       cursor: pointer;
       z-index: 1000;
     }
-
-    form {
-      background: var(--card-dark);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 600px;
-      margin: 2rem auto;
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg-dark);
-      color: var(--text-light);
-    }
-
-    body.light form {
-      background: var(--card-light);
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 1rem;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-actions {
-        flex-direction: row;
-      }
-
-      .card {
-        width: 90%;
-      }
-
-      .hero h2 {
-        font-size: 2rem;
-      }
-    }
   </style>
 </head>
 <body>
-<body>
-  <div id="loader">Caricamento...</div>
+   <div id="loader">Caricamento...</div>
 
   <header>
     <img src="logo.webp" alt="Logo Apocaliss" class="logo" />
@@ -568,13 +472,31 @@
     msg.textContent = "✅ Messaggio inviato con successo!";
     msg.style.color = "green";
   });
-</script>
 
 <!-- Iframe invisibile per bloccare redirect di FormSubmit -->
 <iframe name="hidden_iframe" style="display:none;"></iframe>
+    window.addEventListener("load", () => {
+      document.getElementById("loader").style.display = "none";
+    });
+
+    document.getElementById("toggleTheme").addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    });
+
+    document.getElementById("menuToggle").addEventListener("click", () => {
+      document.getElementById("navLinks").classList.toggle("active");
+    });
+
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollTopBtn.style.display = window.scrollY > 100 ? "block" : "none";
+    });
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   </script>
 </body>
 </html>
 
-</body>
-</html>
+
