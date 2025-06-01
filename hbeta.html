@@ -57,7 +57,7 @@
     }
 
     header {
-      padding: 2rem;
+      padding: 2rem 1rem 1rem;
       text-align: center;
     }
 
@@ -75,6 +75,8 @@
       align-items: center;
       flex-wrap: wrap;
       padding: 1rem;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .nav-title {
@@ -82,10 +84,17 @@
       color: var(--violet);
     }
 
+    .nav-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
     .nav-links {
       display: flex;
       gap: 1.5rem;
       list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .nav-links a {
@@ -122,7 +131,6 @@
       padding: 6px 12px;
       border-radius: 6px;
       cursor: pointer;
-      margin-left: 0.5rem;
       transition: background 0.3s;
     }
 
@@ -279,6 +287,11 @@
     }
 
     @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .menu-toggle {
         display: flex;
       }
@@ -294,6 +307,10 @@
         display: flex;
       }
 
+      .nav-actions {
+        flex-direction: row;
+      }
+
       .card {
         width: 90%;
       }
@@ -305,6 +322,7 @@
   </style>
 </head>
 <body>
+<body>
   <div id="loader">Caricamento...</div>
 
   <header>
@@ -313,18 +331,18 @@
       <div class="nav-title">Apocaliss</div>
       <div>
         <button class="theme-toggle" id="toggleTheme">🌓</button>
-        <button class="lang-toggle" id="toggleLang">EN</button>
+        <button class="lang-toggle" id="toggleLang">🇮🇹 / 🇬🇧</button>
       </div>
       <div class="menu-toggle" id="menuToggle">
         <span></span><span></span><span></span>
       </div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#features">Caratteristiche</a></li>
-        <li><a href="#images">Immagini</a></li>
-        <li><a href="#testimonials">Testimonianze</a></li>
-        <li><a href="#invite">Invita</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contatti</a></li>
+        <li class="nav-i"><a href="#features">Caratteristiche</a></li>
+        <li class="nav-i"><a href="#images">Immagini</a></li>
+        <li class="nav-i"><a href="#testimonials">Testimonianze</a></li>
+        <li class="nav-i"><a href="#invite">Invita</a></li>
+        <li class="nav-i"><a href="#faq">FAQ</a></li>
+        <li class="nav-i"><a href="#contact">Contatti</a></li>
       </ul>
     </nav>
 
@@ -337,17 +355,17 @@
   </header>
 
   <section id="features">
-    <h2>⚙️ Caratteristiche</h2>
+    <h2 id="featuresTitle">⚙️ Caratteristiche</h2>
     <div class="features-grid">
-      <div class="card"><h3>🔒 Moderazione</h3><p>Ban, kick, mute e automoderazione avanzata.</p></div>
-      <div class="card"><h3>🎉 Giochi</h3><p>Mini-giochi e comandi divertenti.</p></div>
-      <div class="card"><h3>🛠️ Personalizzazione</h3><p>Prefissi, ruoli e automazioni configurabili.</p></div>
+      <div class="card"><h3 id="modTitle">🔒 Moderazione</h3><p id="modDesc">Ban, kick, mute e automoderazione avanzata.</p></div>
+      <div class="card"><h3 id="gamesTitle">🎉 Giochi</h3><p id="gamesDesc">Mini-giochi e comandi divertenti.</p></div>
+      <div class="card"><h3 id="customTitle">🛠️ Personalizzazione</h3><p id="customDesc">Prefissi, ruoli e automazioni configurabili.</p></div>
     </div>
   </section>
 
   <section id="images">
-    <h2>📷 Pannello Comandi</h2>
-    <p>Ecco alcune schermate di Apocaliss:</p>
+    <h2 id="imagesTitle">📷 Pannello Comandi</h2>
+    <p id="imagesDesc">Ecco alcune schermate di Apocaliss:</p>
     <div class="image-grid">
       <div class="image-item"><img src="clear.jpg" alt="Clear"><h4>Clear</h4></div>
       <div class="image-item"><img src="help.jpg" alt="Help"><h4>Help</h4></div>
@@ -358,7 +376,7 @@
   </section>
 
   <section id="testimonials">
-    <h2>💬 Testimonianze</h2>
+    <h2 id="testimonialsTitle">💬 Testimonianze</h2>
     <div class="testimonials">
       <div class="card"><p>"Apocaliss ha trasformato il nostro server!"</p><strong>- Luca</strong></div>
       <div class="card"><p>"Facile da usare e pieno di funzionalità!"</p><strong>- Sara</strong></div>
@@ -366,42 +384,40 @@
   </section>
 
   <section id="faq">
-    <h2>❓ FAQ</h2>
+    <h2 id="faqTitle">❓ FAQ</h2>
     <div class="features-grid">
-      <div class="card"><h3>Come aggiungo Apocaliss?</h3><p>Clicca sul pulsante “Invita Ora”.</p></div>
-      <div class="card"><h3>È gratuito?</h3><p>Sì, Apocaliss è completamente gratuito.</p></div>
+      <div class="card"><h3 id="faq1Title">Come aggiungo Apocaliss?</h3><p id="faq1Desc">Clicca sul pulsante “Invita Ora”.</p></div>
+      <div class="card"><h3 id="faq2Title">È gratuito?</h3><p id="faq2Desc">Sì, Apocaliss è completamente gratuito.</p></div>
     </div>
   </section>
 
   <section id="invite">
-    <h2>🚀 Invita Apocaliss</h2>
-    <p>Porta la potenza di Apocaliss nel tuo server Discord.</p>
-    <a href="https://discord.com/oauth2/authorize?client_id=1039915454489170032&scope=bot%20applications.commands&permissions=2146958847" class="btn">Invita Ora</a>
+    <h2 id="inviteTitle">🚀 Invita Apocaliss</h2>
+    <p id="inviteDesc">Porta la potenza di Apocaliss nel tuo server Discord.</p>
+    <a href="https://discord.com/oauth2/authorize?client_id=1039915454489170032&scope=bot%20applications.commands&permissions=2146958847" class="btn" id="inviteBtn">Invita Ora</a>
   </section>
 
   <section id="contact">
-    <h2>📧 Contatti</h2>
+    <h2 id="contactTitle">📧 Contatti</h2>
     <form action="https://formsubmit.co/tuamail@email.it" method="POST">
       <input type="text" name="name" placeholder="Il tuo nome" required>
       <input type="email" name="email" placeholder="La tua email" required>
       <textarea name="message" rows="5" placeholder="Scrivi il tuo messaggio..." required></textarea>
-      <button type="submit" class="btn">Invia</button>
+      <button type="submit" class="btn" id="contactBtn">Invia</button>
     </form>
   </section>
 
   <footer>
-    <p>Creato con ❤️ da <a href="https://tempestosoh.github.io/portfolio/homepage.html" target="_blank">Tempestosoh</a> | <a href="https://discord.com/invite/zGUR2wtWSQ" target="_blank">Supporto</a></p>
+    <p id="footerText">Creato con ❤️ da <a href="https://tempestosoh.github.io/portfolio/homepage.html" target="_blank">Tempestosoh</a> | <a href="https://discord.com/invite/zGUR2wtWSQ" target="_blank">Supporto</a></p>
   </footer>
 
   <button id="scrollTopBtn">↑</button>
 
   <script>
-    // Loader
     window.addEventListener("load", () => {
       document.getElementById("loader").style.display = "none";
     });
 
-    // Theme
     const toggleTheme = document.getElementById("toggleTheme");
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "light") document.body.classList.add("light");
@@ -411,31 +427,113 @@
       localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
     });
 
-    // Menu mobile
     document.getElementById("menuToggle").addEventListener("click", () => {
       document.getElementById("navLinks").classList.toggle("active");
     });
 
-    // Scroll to top
-    const scrollBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = () => {
-      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
-    };
-    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // Lingua
     const langToggle = document.getElementById("toggleLang");
-    let isIT = true;
-    langToggle.addEventListener("click", () => {
-      isIT = !isIT;
-      langToggle.textContent = isIT ? "EN" : "IT";
-      document.getElementById("heroTitle").textContent = isIT ? "Il bot definitivo per la tua community Discord" : "The ultimate bot for your Discord community";
-      document.getElementById("heroDesc").textContent = isIT ? "Moderazione, divertimento e comandi personalizzati. Tutto in un unico bot potente." : "Moderation, fun and custom commands. All in one powerful bot.";
-      document.getElementById("heroBtn").textContent = isIT ? "Invita Apocaliss" : "Invite Apocaliss";
-    });
+    const navItems = document.querySelectorAll(".nav-i a");
 
-    // Stato simulato
-    document.getElementById("botStatus").textContent = "🟢 Online";
+    const content = {
+      it: {
+        nav: ["Caratteristiche", "Immagini", "Testimonianze", "Invita", "FAQ", "Contatti"],
+        title: "Il bot definitivo per la tua community Discord",
+        desc: "Moderazione, divertimento e comandi personalizzati. Tutto in un unico bot potente.",
+        button: "Invita Apocaliss",
+        langBtn: "EN",
+        featuresTitle: "⚙️ Caratteristiche",
+        modTitle: "🔒 Moderazione",
+        modDesc: "Ban, kick, mute e automoderazione avanzata.",
+        gamesTitle: "🎉 Giochi",
+        gamesDesc: "Mini-giochi e comandi divertenti.",
+        customTitle: "🛠️ Personalizzazione",
+        customDesc: "Prefissi, ruoli e automazioni configurabili.",
+        imagesTitle: "📷 Pannello Comandi",
+        imagesDesc: "Ecco alcune schermate di Apocaliss:",
+        testimonialsTitle: "💬 Testimonianze",
+        faqTitle: "❓ FAQ",
+        faq1Title: "Come aggiungo Apocaliss?",
+        faq1Desc: "Clicca sul pulsante “Invita Ora”.",
+        faq2Title: "È gratuito?",
+        faq2Desc: "Sì, Apocaliss è completamente gratuito.",
+        inviteTitle: "🚀 Invita Apocaliss",
+        inviteDesc: "Porta la potenza di Apocaliss nel tuo server Discord.",
+        inviteBtn: "Invita Ora",
+        contactTitle: "📧 Contatti",
+        contactBtn: "Invia",
+        footerText: "Creato con ❤️ da <a href=\"https://tempestosoh.github.io/portfolio/homepage.html\" target=\"_blank\">Tempestosoh</a> | <a href=\"https://discord.com/invite/zGUR2wtWSQ\" target=\"_blank\">Supporto</a>"
+      },
+      en: {
+        nav: ["Features", "Images", "Testimonials", "Invite", "FAQ", "Contact"],
+        title: "The ultimate bot for your Discord community",
+        desc: "Moderation, fun, and custom commands. All in one powerful bot.",
+        button: "Invite Apocaliss",
+        langBtn: "IT",
+        featuresTitle: "⚙️ Features",
+        modTitle: "🔒 Moderation",
+        modDesc: "Ban, kick, mute and advanced auto-moderation.",
+        gamesTitle: "🎉 Games",
+        gamesDesc: "Mini-games and fun commands.",
+        customTitle: "🛠️ Customization",
+        customDesc: "Configurable prefixes, roles, and automations.",
+        imagesTitle: "📷 Command Panel",
+        imagesDesc: "Here are some screenshots of Apocaliss:",
+        testimonialsTitle: "💬 Testimonials",
+        faqTitle: "❓ FAQ",
+        faq1Title: "How do I add Apocaliss?",
+        faq1Desc: "Click on the “Invite Now” button.",
+        faq2Title: "Is it free?",
+        faq2Desc: "Yes, Apocaliss is completely free.",
+        inviteTitle: "🚀 Invite Apocaliss",
+        inviteDesc: "Bring the power of Apocaliss to your Discord server.",
+        inviteBtn: "Invite Now",
+        contactTitle: "📧 Contact",
+        contactBtn: "Send",
+        footerText: "Made with ❤️ by <a href=\"https://tempestosoh.github.io/portfolio/homepage.html\" target=\"_blank\">Tempestosoh</a> | <a href=\"https://discord.com/invite/zGUR2wtWSQ\" target=\"_blank\">Support</a>"
+      }
+    };
+
+    function applyLang(lang) {
+      const c = content[lang];
+      navItems.forEach((el, i) => el.textContent = c.nav[i]);
+      document.getElementById("heroTitle").textContent = c.title;
+      document.getElementById("heroDesc").textContent = c.desc;
+      document.getElementById("heroBtn").textContent = c.button;
+      langToggle.textContent = c.langBtn;
+      document.getElementById("featuresTitle").textContent = c.featuresTitle;
+      document.getElementById("modTitle").textContent = c.modTitle;
+      document.getElementById("modDesc").textContent = c.modDesc;
+      document.getElementById("gamesTitle").textContent = c.gamesTitle;
+      document.getElementById("gamesDesc").textContent = c.gamesDesc;
+      document.getElementById("customTitle").textContent = c.customTitle;
+      document.getElementById("customDesc").textContent = c.customDesc;
+      document.getElementById("imagesTitle").textContent = c.imagesTitle;
+      document.getElementById("imagesDesc").textContent = c.imagesDesc;
+      document.getElementById("testimonialsTitle").textContent = c.testimonialsTitle;
+      document.getElementById("faqTitle").textContent = c.faqTitle;
+      document.getElementById("faq1Title").textContent = c.faq1Title;
+      document.getElementById("faq1Desc").textContent = c.faq1Desc;
+      document.getElementById("faq2Title").textContent = c.faq2Title;
+      document.getElementById("faq2Desc").textContent = c.faq2Desc;
+      document.getElementById("inviteTitle").textContent = c.inviteTitle;
+      document.getElementById("inviteDesc").textContent = c.inviteDesc;
+      document.getElementById("inviteBtn").textContent = c.inviteBtn;
+      document.getElementById("contactTitle").textContent = c.contactTitle;
+      document.getElementById("contactBtn").textContent = c.contactBtn;
+      document.getElementById("footerText").innerHTML = c.footerText;
+      localStorage.setItem("lang", lang);
+    }
+
+    let currentLang = localStorage.getItem("lang") || "it";
+    applyLang(currentLang);
+
+    langToggle.addEventListener("click", () => {
+      currentLang = currentLang === "it" ? "en" : "it";
+      applyLang(currentLang);
+    });
   </script>
+</body>
+</html>
+
 </body>
 </html>
