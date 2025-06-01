@@ -399,12 +399,22 @@
 
   <section id="contact">
     <h2 id="contactTitle">📧 Contatti</h2>
-    <form action="https://formsubmit.co/apocaliss.bot@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Il tuo nome / your name" required>
-      <input type="email" name="email" placeholder="La tua email / your mail " required>
-      <textarea name="message" rows="5" placeholder="Scrivi il tuo messaggio... / Write your message..." required></textarea>
-      <button type="submit" class="btn" id="contactBtn">Invia</button>
-    </form>
+    <form id="contactForm" action="https://formsubmit.co/apocaliss.bot@gmail.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="">
+
+  <input type="text" name="name" placeholder="Il tuo nome / your name" required>
+  <input type="email" name="email" placeholder="La tua email / your mail" required>
+  <textarea name="message" rows="5" placeholder="Scrivi il tuo messaggio... / Write your message..." required></textarea>
+
+  <!-- CAPTCHA -->
+  <div id="captchaContainer"></div>
+  <input type="text" id="captchaInput" placeholder="Risultato..." required>
+  <input type="hidden" id="captchaAnswer">
+
+  <button type="submit" class="btn" id="contactBtn">Invia</button>
+  <p id="formMsg" style="margin-top: 1rem;"></p>
+</form>
   </section>
 
   <footer>
@@ -531,6 +541,37 @@
       currentLang = currentLang === "it" ? "en" : "it";
       applyLang(currentLang);
     });
+    <script>
+  // CAPTCHA matematico
+  const a = Math.floor(Math.random() * 10);
+  const b = Math.floor(Math.random() * 10);
+  const result = a + b;
+  document.getElementById("captchaContainer").innerText = `Quanto fa ${a} + ${b}?`;
+  document.getElementById("captchaAnswer").value = result;
+
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("formMsg");
+
+  form.addEventListener("submit", function (e) {
+    const userAnswer = document.getElementById("captchaInput").value.trim();
+    const correctAnswer = document.getElementById("captchaAnswer").value;
+
+    if (userAnswer !== correctAnswer) {
+      e.preventDefault();
+      msg.textContent = "❌ Risposta al CAPTCHA errata. Riprova.";
+      msg.style.color = "red";
+      return;
+    }
+
+    // Impedisce il redirect
+    form.setAttribute("target", "hidden_iframe");
+    msg.textContent = "✅ Messaggio inviato con successo!";
+    msg.style.color = "green";
+  });
+</script>
+
+<!-- Iframe invisibile per bloccare redirect di FormSubmit -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
   </script>
 </body>
 </html>
