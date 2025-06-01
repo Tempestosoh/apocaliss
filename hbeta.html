@@ -397,15 +397,16 @@
     <a href="https://discord.com/oauth2/authorize?client_id=1039915454489170032&scope=bot%20applications.commands&permissions=2146958847" class="btn" id="inviteBtn">Invita Ora</a>
   </section>
 
-  <section id="contact">
-    <h2 id="contactTitle">📧 Contatti</h2>
-    <form action="https://formsubmit.co/apocaliss.bot@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Il tuo nome / your name" required>
-      <input type="email" name="email" placeholder="La tua email / your mail " required>
-      <textarea name="message" rows="5" placeholder="Scrivi il tuo messaggio... / Write your message..." required></textarea>
-      <button type="submit" class="btn" id="contactBtn">Invia</button>
-    </form>
-  </section>
+  <<section id="contact">
+  <h2 id="contactTitle">📧 Contatti</h2>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Il tuo nome / your name" required>
+    <input type="email" name="email" placeholder="La tua email / your mail " required>
+    <textarea name="message" rows="5" placeholder="Scrivi il tuo messaggio... / Write your message..." required></textarea>
+    <button type="submit" class="btn" id="contactBtn">Invia</button>
+    <p id="formStatus"></p>
+  </form>
+</section>
 
   <footer>
     <p id="footerText">Creato con ❤️ da <a href="https://tempestosoh.github.io/portfolio/homepage.html" target="_blank">Tempestosoh</a> | <a href="https://discord.com/invite/zGUR2wtWSQ" target="_blank">Supporto</a></p>
@@ -531,6 +532,32 @@
       currentLang = currentLang === "it" ? "en" : "it";
       applyLang(currentLang);
     });
+  document.getElementById('contactForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch("https://formsubmit.co/ajax/apocaliss.bot@gmail.com", {
+      method: "POST",
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    const result = await response.json();
+    if (result.success === 'true') {
+      document.getElementById('formStatus').innerText = "✅ Messaggio inviato!";
+      form.reset();
+    } else {
+      document.getElementById('formStatus').innerText = "❌ Errore nell'invio.";
+    }
+  } catch (error) {
+    document.getElementById('formStatus').innerText = "⚠️ Errore di rete.";
+  }
+});
   </script>
 </body>
 </html>
