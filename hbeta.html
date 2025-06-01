@@ -3,19 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apocaliss - Discord Bot</title>
+  <title>Beta Non Disponibile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
       --violet: #9b59b6;
       --bg-dark: #0f0f0f;
-      --bg-light: #f2f2f2;
       --text-light: #f1f1f1;
-      --text-dark: #0f0f0f;
-      --card-dark: #1c1c1c;
-      --card-light: #ffffff;
-      --border: #333;
       --transition: 0.3s ease;
     }
 
@@ -25,542 +20,69 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: 'Orbitron', sans-serif;
-      background: var(--bg-dark);
+      background-color: var(--bg-dark);
       color: var(--text-light);
-      transition: var(--transition);
-    }
-
-    body.light {
-      background: var(--bg-light);
-      color: var(--text-dark);
-    }
-
-    #loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-dark);
-      color: var(--violet);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      z-index: 2000;
-    }
-
-    header {
-      padding: 2rem 1rem 1rem;
-      text-align: center;
-    }
-
-    .logo {
-      width: 100px;
-      border-radius: 50%;
-      border: 2px solid var(--violet);
-      box-shadow: 0 0 15px var(--violet);
-      margin-bottom: 1rem;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 1rem;
       flex-direction: column;
-      gap: 1rem;
-    }
-
-    .nav-title {
-      font-size: 2rem;
-      color: var(--violet);
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      flex-wrap: wrap;
       justify-content: center;
-    }
-
-    .nav-links a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover {
-      color: var(--violet);
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 25px;
-      background: var(--violet);
-      margin: 4px 0;
-      border-radius: 5px;
-      transition: 0.4s;
-    }
-
-    .theme-toggle,
-    .lang-toggle {
-      font-size: 1.2rem;
-      background: var(--violet);
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .theme-toggle:hover,
-    .lang-toggle:hover {
-      background: #8e44ad;
-    }
-
-    .hero {
+      align-items: center;
+      min-height: 100vh;
       text-align: center;
-      margin: 3rem 1rem;
+      padding: 2rem;
     }
 
-    .hero h2 {
+    h1 {
       font-size: 2.5rem;
+      color: var(--violet);
       margin-bottom: 1rem;
     }
 
-    .hero p {
-      margin: 1rem auto 2rem;
+    p {
+      font-size: 1.2rem;
       max-width: 600px;
+      margin-bottom: 2rem;
     }
 
     .btn {
-      display: inline-block;
-      background: var(--violet);
+      background-color: var(--violet);
       color: white;
       padding: 0.75rem 1.5rem;
+      border: none;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1rem;
       transition: var(--transition);
-      margin-top: 1rem;
     }
 
     .btn:hover {
-      background: #8e44ad;
-    }
-
-    section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .features-grid,
-    .testimonials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    .card {
-      background: var(--card-dark);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      border-radius: 12px;
-      width: 300px;
-      transition: transform 0.3s, background 0.3s, color 0.3s;
-    }
-
-    body.light .card {
-      background: var(--card-light);
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 2rem;
-      place-items: center;
-      margin-top: 2rem;
-    }
-
-    .image-item img {
-      width: 100%;
-      border-radius: 10px;
-      border: 2px solid var(--border);
-    }
-
-    .image-item h4 {
-      margin-top: 0.5rem;
-      color: var(--violet);
-    }
-
-    .status {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-
-    .online {
-      color: #2ecc71;
-    }
-
-    .offline {
-      color: #e74c3c;
+      background-color: #8e44ad;
     }
 
     footer {
-      padding: 2rem;
-      text-align: center;
-      background: #1a1a1a;
-      font-size: 0.9rem;
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.85rem;
+      color: #888;
     }
 
     footer a {
       color: var(--violet);
       text-decoration: none;
     }
-
-    #scrollTopBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: none;
-      background: var(--violet);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 20px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    form {
-      background: var(--card-dark);
-      border: 1px solid var(--border);
-      padding: 2rem;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 600px;
-      margin: 2rem auto;
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg-dark);
-      color: var(--text-light);
-    }
-
-    body.light form {
-      background: var(--card-light);
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 1rem;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .nav-actions {
-        flex-direction: row;
-      }
-
-      .card {
-        width: 90%;
-      }
-
-      .hero h2 {
-        font-size: 2rem;
-      }
-    }
   </style>
 </head>
 <body>
-<body>
-  <div id="loader">Caricamento...</div>
-
-  <header>
-    <img src="logo.webp" alt="Logo Apocaliss" class="logo" />
-    <nav>
-      <div class="nav-title">Apocaliss</div>
-      <div>
-        <button class="theme-toggle" id="toggleTheme">🌓</button>
-        <button class="lang-toggle" id="toggleLang">🇮🇹 / 🇬🇧</button>
-      </div>
-      <div class="menu-toggle" id="menuToggle">
-        <span></span><span></span><span></span>
-      </div>
-      <ul class="nav-links" id="navLinks">
-        <li class="nav-i"><a href="#features">Caratteristiche</a></li>
-        <li class="nav-i"><a href="#images">Immagini</a></li>
-        <li class="nav-i"><a href="#testimonials">Testimonianze</a></li>
-        <li class="nav-i"><a href="#invite">Invita</a></li>
-        <li class="nav-i"><a href="#faq">FAQ</a></li>
-        <li class="nav-i"><a href="#contact">Contatti</a></li>
-      </ul>
-    </nav>
-
-    <div class="hero">
-      <h2 id="heroTitle">Il bot definitivo per la tua community Discord</h2>
-      <p id="heroDesc">Moderazione, divertimento e comandi personalizzati. Tutto in un unico bot potente.</p>
-      <a href="#invite" class="btn" id="heroBtn">Invita Apocaliss</a>
-      <div class="status" id="botStatus">🟢 Online</div>
-    </div>
-  </header>
-
-  <section id="features">
-    <h2 id="featuresTitle">⚙️ Caratteristiche</h2>
-    <div class="features-grid">
-      <div class="card"><h3 id="modTitle">🔒 Moderazione</h3><p id="modDesc">Ban, kick, mute e automoderazione avanzata.</p></div>
-      <div class="card"><h3 id="gamesTitle">🎉 Giochi</h3><p id="gamesDesc">Mini-giochi e comandi divertenti.</p></div>
-      <div class="card"><h3 id="customTitle">🛠️ Personalizzazione</h3><p id="customDesc">Prefissi, ruoli e automazioni configurabili.</p></div>
-    </div>
-  </section>
-
-  <section id="images">
-    <h2 id="imagesTitle">📷 Pannello Comandi</h2>
-    <p id="imagesDesc">Ecco alcune schermate di Apocaliss:</p>
-    <div class="image-grid">
-      <div class="image-item"><img src="clear.jpg" alt="Clear"><h4>Clear</h4></div>
-      <div class="image-item"><img src="help.jpg" alt="Help"><h4>Help</h4></div>
-      <div class="image-item"><img src="math.jpg" alt="Math"><h4>Math</h4></div>
-      <div class="image-item"><img src="member.jpg" alt="Member"><h4>Member</h4></div>
-      <div class="image-item"><img src="ticket.jpg" alt="Ticket"><h4>Ticket</h4></div>
-    </div>
-  </section>
-
-  <section id="testimonials">
-    <h2 id="testimonialsTitle">💬 Testimonianze</h2>
-    <div class="testimonials">
-      <div class="card"><p>"Apocaliss ha trasformato il nostro server!"</p><strong>- Luca</strong></div>
-      <div class="card"><p>"Easy to use and packed with features!"</p><strong>- Sarah</strong></div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <h2 id="faqTitle">❓ FAQ</h2>
-    <div class="features-grid">
-      <div class="card"><h3 id="faq1Title">Come aggiungo Apocaliss?</h3><p id="faq1Desc">Clicca sul pulsante “Invita Ora”.</p></div>
-      <div class="card"><h3 id="faq2Title">È gratuito?</h3><p id="faq2Desc">Sì, Apocaliss è completamente gratuito.</p></div>
-    </div>
-  </section>
-
-  <section id="invite">
-    <h2 id="inviteTitle">🚀 Invita Apocaliss</h2>
-    <p id="inviteDesc">Porta la potenza di Apocaliss nel tuo server Discord.</p>
-    <a href="https://discord.com/oauth2/authorize?client_id=1039915454489170032&scope=bot%20applications.commands&permissions=2146958847" class="btn" id="inviteBtn">Invita Ora</a>
-  </section>
-
-  <<section id="contact">
-  <h2 id="contactTitle">📧 Contatti</h2>
-  <form id="contactForm">
-    <input type="text" name="name" placeholder="Il tuo nome / your name" required>
-    <input type="email" name="email" placeholder="La tua email / your mail " required>
-    <textarea name="message" rows="5" placeholder="Scrivi il tuo messaggio... / Write your message..." required></textarea>
-    <button type="submit" class="btn" id="contactBtn">Invia</button>
-    <p id="formStatus"></p>
-  </form>
-</section>
+  <main>
+    <h1>🚫 Nessuna Beta Disponibile</h1>
+    <p>Attualmente non ci sono versioni beta disponibili per Apocaliss. Torna più tardi o visita la home per maggiori informazioni.</p>
+    <a class="btn" href="https://tempestosoh.github.io/apocaliss/hpage.html">🏠 Torna alla Home</a>
+  </main>
 
   <footer>
-    <p id="footerText">Creato con ❤️ da <a href="https://tempestosoh.github.io/portfolio/homepage.html" target="_blank">Tempestosoh</a> | <a href="https://discord.com/invite/zGUR2wtWSQ" target="_blank">Supporto</a></p>
+    <p>Creato con ❤️ da <a href="https://tempestosoh.github.io/portfolio/homepage.html" target="_blank">Tempestosoh</a></p>
   </footer>
-
-  <button id="scrollTopBtn">↑</button>
-
-  <script>
-    window.addEventListener("load", () => {
-      document.getElementById("loader").style.display = "none";
-    });
-
-    const toggleTheme = document.getElementById("toggleTheme");
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") document.body.classList.add("light");
-
-    toggleTheme.addEventListener("click", () => {
-      document.body.classList.toggle("light");
-      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
-    });
-
-    document.getElementById("menuToggle").addEventListener("click", () => {
-      document.getElementById("navLinks").classList.toggle("active");
-    });
-
-    const langToggle = document.getElementById("toggleLang");
-    const navItems = document.querySelectorAll(".nav-i a");
-
-    const content = {
-      it: {
-        nav: ["Caratteristiche", "Immagini", "Testimonianze", "Invita", "FAQ", "Contatti"],
-        title: "Il bot definitivo per la tua community Discord",
-        desc: "Moderazione, divertimento e comandi personalizzati. Tutto in un unico bot potente.",
-        button: "Invita Apocaliss",
-        langBtn: "EN",
-        featuresTitle: "⚙️ Caratteristiche",
-        modTitle: "🔒 Moderazione",
-        modDesc: "Ban, kick, mute e automoderazione avanzata.",
-        gamesTitle: "🎉 Giochi",
-        gamesDesc: "Mini-giochi e comandi divertenti.",
-        customTitle: "🛠️ Personalizzazione",
-        customDesc: "Prefissi, ruoli e automazioni configurabili.",
-        imagesTitle: "📷 Pannello Comandi",
-        imagesDesc: "Ecco alcune schermate di Apocaliss:",
-        testimonialsTitle: "💬 Testimonianze",
-        faqTitle: "❓ FAQ",
-        faq1Title: "Come aggiungo Apocaliss?",
-        faq1Desc: "Clicca sul pulsante “Invita Ora”.",
-        faq2Title: "È gratuito?",
-        faq2Desc: "Sì, Apocaliss è completamente gratuito.",
-        inviteTitle: "🚀 Invita Apocaliss",
-        inviteDesc: "Porta la potenza di Apocaliss nel tuo server Discord.",
-        inviteBtn: "Invita Ora",
-        contactTitle: "📧 Contatti",
-        contactBtn: "Invia",
-        footerText: "Creato con ❤️ da <a href=\"https://tempestosoh.github.io/portfolio/homepage.html\" target=\"_blank\">Tempestosoh</a> | <a href=\"https://discord.com/invite/zGUR2wtWSQ\" target=\"_blank\">Supporto</a>"
-      },
-      en: {
-        nav: ["Features", "Images", "Testimonials", "Invite", "FAQ", "Contact"],
-        title: "The ultimate bot for your Discord community",
-        desc: "Moderation, fun, and custom commands. All in one powerful bot.",
-        button: "Invite Apocaliss",
-        langBtn: "IT",
-        featuresTitle: "⚙️ Features",
-        modTitle: "🔒 Moderation",
-        modDesc: "Ban, kick, mute and advanced auto-moderation.",
-        gamesTitle: "🎉 Games",
-        gamesDesc: "Mini-games and fun commands.",
-        customTitle: "🛠️ Customization",
-        customDesc: "Configurable prefixes, roles, and automations.",
-        imagesTitle: "📷 Command Panel",
-        imagesDesc: "Here are some screenshots of Apocaliss:",
-        testimonialsTitle: "💬 Testimonials",
-        faqTitle: "❓ FAQ",
-        faq1Title: "How do I add Apocaliss?",
-        faq1Desc: "Click on the “Invite Now” button.",
-        faq2Title: "Is it free?",
-        faq2Desc: "Yes, Apocaliss is completely free.",
-        inviteTitle: "🚀 Invite Apocaliss",
-        inviteDesc: "Bring the power of Apocaliss to your Discord server.",
-        inviteBtn: "Invite Now",
-        contactTitle: "📧 Contact",
-        contactBtn: "Send",
-        footerText: "Made with ❤️ by <a href=\"https://tempestosoh.github.io/portfolio/homepage.html\" target=\"_blank\">Tempestosoh</a> | <a href=\"https://discord.com/invite/zGUR2wtWSQ\" target=\"_blank\">Support</a>"
-      }
-    };
-
-    function applyLang(lang) {
-      const c = content[lang];
-      navItems.forEach((el, i) => el.textContent = c.nav[i]);
-      document.getElementById("heroTitle").textContent = c.title;
-      document.getElementById("heroDesc").textContent = c.desc;
-      document.getElementById("heroBtn").textContent = c.button;
-      langToggle.textContent = c.langBtn;
-      document.getElementById("featuresTitle").textContent = c.featuresTitle;
-      document.getElementById("modTitle").textContent = c.modTitle;
-      document.getElementById("modDesc").textContent = c.modDesc;
-      document.getElementById("gamesTitle").textContent = c.gamesTitle;
-      document.getElementById("gamesDesc").textContent = c.gamesDesc;
-      document.getElementById("customTitle").textContent = c.customTitle;
-      document.getElementById("customDesc").textContent = c.customDesc;
-      document.getElementById("imagesTitle").textContent = c.imagesTitle;
-      document.getElementById("imagesDesc").textContent = c.imagesDesc;
-      document.getElementById("testimonialsTitle").textContent = c.testimonialsTitle;
-      document.getElementById("faqTitle").textContent = c.faqTitle;
-      document.getElementById("faq1Title").textContent = c.faq1Title;
-      document.getElementById("faq1Desc").textContent = c.faq1Desc;
-      document.getElementById("faq2Title").textContent = c.faq2Title;
-      document.getElementById("faq2Desc").textContent = c.faq2Desc;
-      document.getElementById("inviteTitle").textContent = c.inviteTitle;
-      document.getElementById("inviteDesc").textContent = c.inviteDesc;
-      document.getElementById("inviteBtn").textContent = c.inviteBtn;
-      document.getElementById("contactTitle").textContent = c.contactTitle;
-      document.getElementById("contactBtn").textContent = c.contactBtn;
-      document.getElementById("footerText").innerHTML = c.footerText;
-      localStorage.setItem("lang", lang);
-    }
-
-    let currentLang = localStorage.getItem("lang") || "it";
-    applyLang(currentLang);
-
-    langToggle.addEventListener("click", () => {
-      currentLang = currentLang === "it" ? "en" : "it";
-      applyLang(currentLang);
-    });
-  document.getElementById('contactForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
-  
-  const form = e.target;
-  const data = new FormData(form);
-
-  try {
-    const response = await fetch("https://formsubmit.co/ajax/apocaliss.bot@gmail.com", {
-      method: "POST",
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    const result = await response.json();
-    if (result.success === 'true') {
-      document.getElementById('formStatus').innerText = "✅ Messaggio inviato!";
-      form.reset();
-    } else {
-      document.getElementById('formStatus').innerText = "❌ Errore nell'invio.";
-    }
-  } catch (error) {
-    document.getElementById('formStatus').innerText = "⚠️ Errore di rete.";
-  }
-});
-  </script>
-</body>
-</html>
-
 </body>
 </html>
