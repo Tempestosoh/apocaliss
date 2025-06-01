@@ -1,4 +1,5 @@
 # 🤖 Apocaliss - Discord Bot
+
 ![Status](https://img.shields.io/badge/status-attivo-red?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 ![Made by](https://img.shields.io/badge/made%20by-Tempestosoh-red?style=flat-square)
@@ -6,9 +7,11 @@
 ![CSS3](https://img.shields.io/badge/CSS3-%231572B6?logo=css3&logoColor=white&style=flat-square)
 ![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E?logo=javascript&logoColor=black&style=flat-square)
 
-**Apocaliss** è il bot definitivo per gestire, personalizzare e animare la tua community Discord. Potente, versatile e gratuito. Offri ai tuoi membri un'esperienza superiore grazie a moderazione avanzata, giochi e automazioni su misura.
+<p align="center">
+  <img src="logo.webp" alt="Logo Apocaliss" width="200" style="border-radius: 50%;" />
+</p>
 
-![Logo](logo.webp)
+**Apocaliss** è il bot definitivo per gestire, personalizzare e animare la tua community Discord. Potente, versatile e gratuito. Offri ai tuoi membri un'esperienza superiore grazie a moderazione avanzata, giochi e automazioni su misura.
 
 ## 🌐 Sito Web
 
@@ -62,7 +65,3 @@ Hai bisogno di aiuto, suggerimenti o vuoi collaborare?
 - Il sito è **responsive** e supporta **tema chiaro/scuro**.
 - Disponibile in **italiano** e **inglese** tramite toggle dinamico.
 - Stato bot in tempo reale: `🟢 Online` visualizzato direttamente in homepage.
-
----
-
-
