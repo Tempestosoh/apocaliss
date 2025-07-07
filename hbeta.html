@@ -85,6 +85,11 @@
             overflow-x: hidden; /* Previene scroll orizzontale */
         }
 
+        /* Aggiunta per impedire lo scroll del body quando il mobile nav è aperto */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -155,14 +160,14 @@
         .header-left {
             display: flex;
             align-items: center;
-            flex-grow: 1;
+            /* flex-grow: 1; Rimosso per dare più controllo su mobile */
         }
 
         .header-logo {
             display: flex;
             align-items: center;
             text-decoration: none;
-            margin-right: 30px;
+            margin-right: 30px; /* Mantiene spazio su desktop */
         }
 
         .header-logo img {
@@ -172,6 +177,7 @@
             border-radius: 50%; /* Rende l'immagine circolare */
             object-fit: cover; /* Assicura che l'immagine copra l'area senza distorsioni */
             filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+            flex-shrink: 0; /* Impedisce al logo di rimpicciolirsi */
         }
 
         .header-logo .logo-text {
@@ -179,12 +185,13 @@
             font-weight: 800;
             color: var(--primary-color);
             transition: color 0.3s ease;
+            white-space: nowrap; /* Impedisce che il testo vada a capo */
         }
 
         .main-nav {
             display: flex;
             align-items: center;
-            flex-grow: 1;
+            flex-grow: 1; /* Permette alla nav di occupare lo spazio rimanente */
             justify-content: flex-end;
         }
 
@@ -230,6 +237,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-shrink: 0; /* Impedisce ai controlli di rimpicciolirsi */
         }
 
         .lang-toggle {
@@ -271,7 +279,7 @@
 
         /* Hamburger menu (mobile/tablet) */
         .hamburger {
-            display: none;
+            display: none; /* Nascosto di default su desktop */
             flex-direction: column;
             justify-content: space-around;
             width: 30px;
@@ -281,7 +289,7 @@
             cursor: pointer;
             padding: 0;
             z-index: 1001;
-            margin-left: 15px;
+            margin-left: 15px; /* Spazio tra toggle tema e hamburger */
         }
 
         .hamburger .bar {
@@ -290,10 +298,11 @@
             background-color: var(--text-color);
             border-radius: 10px;
             transition: all 0.3s ease;
+            transform-origin: left; /* Aggiunto per un'animazione migliore */
         }
 
         .hamburger.open .bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(5px, -5px); /* Aggiustato il translate */
         }
 
         .hamburger.open .bar:nth-child(2) {
@@ -301,26 +310,28 @@
         }
 
         .hamburger.open .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
+            transform: rotate(-45deg) translate(5px, 5px); /* Aggiustato il translate */
         }
 
         .mobile-nav {
-            display: none;
-            position: fixed;
+            display: none; /* Nascosto di default */
+            position: fixed; /* Si sovrappone e non sposta il contenuto */
             top: 0;
-            right: -280px;
-            width: 250px;
+            right: -280px; /* Inizialmente fuori schermo */
+            width: 250px; /* Larghezza del menu mobile */
+            max-width: 80%; /* Assicurati che non superi la larghezza dello schermo */
             height: 100%;
             background-color: var(--card-bg-light);
             box-shadow: -5px 0 15px var(--shadow-color-light);
-            padding-top: 80px;
+            padding-top: 80px; /* Spazio per l'header */
             transition: right 0.3s ease;
             z-index: 999;
             border-left: 1px solid var(--border-color-light);
+            overflow-y: auto; /* Permette lo scroll se il contenuto è troppo lungo */
         }
 
         .mobile-nav.open {
-            right: 0;
+            right: 0; /* Fa scorrere il menu in vista */
         }
 
         .mobile-nav ul {
@@ -375,6 +386,7 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 15px; /* Aggiunto padding per schermi piccoli */
         }
 
         /* Pulsanti */
@@ -505,12 +517,14 @@
             font-weight: 900;
             line-height: 1.2;
             text-shadow: 0 3px 8px rgba(0,0,0,0.3);
+            padding: 0 15px; /* Aggiunto padding per schermi piccoli */
         }
 
         #hero p {
             font-size: 1.5em;
             margin-bottom: 40px;
             opacity: 0.9;
+            padding: 0 15px; /* Aggiunto padding per schermi piccoli */
         }
 
         /* Sezione Caratteristiche, Comandi, Testimonianze (layout responsivo con gap) */
@@ -586,14 +600,12 @@
         }
 
         /* Sezione Testimonianze */
-        .testimonial-item .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid var(--primary-color);
-            box-shadow: 0 0 15px rgba(106, 13, 173, 0.3);
+        .testimonial-item {
+            /* Rimozione di stili specifici per l'avatar, lasciando il testo centrato */
+            display: flex; /* Utilizza flexbox per centrare facilmente il contenuto rimanente */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .testimonial-item .quote {
@@ -810,7 +822,7 @@
 
         @media (max-width: 900px) {
             .main-nav .nav-links {
-                display: none;
+                display: none; /* Nasconde i link principali su schermi più piccoli */
             }
 
             .main-nav {
@@ -819,18 +831,18 @@
             }
 
             .hamburger {
-                display: flex;
-                order: 2;
+                display: flex; /* Mostra l'hamburger */
+                order: 2; /* Posiziona l'hamburger dopo i controlli nav */
                 margin-left: 15px;
             }
 
             .nav-controls {
-                order: 1;
+                order: 1; /* Posiziona i controlli nav prima dell'hamburger */
                 margin-right: 0;
             }
 
             .header-left {
-                flex-grow: 0;
+                flex-grow: 1; /* Permette al logo di occupare più spazio */
                 margin-right: 0;
             }
 
@@ -855,9 +867,10 @@
                 gap: 20px;
             }
 
+            /* Rimuovi margini laterali indesiderati sulle card/accordion se c'è già padding sul container */
             .feature-item, .command-example, .testimonial-item, .accordion-item, .contact-form {
-                margin-left: 10px;
-                margin-right: 10px;
+                /* margin-left: 10px; */
+                /* margin-right: 10px; */
             }
 
             .section-padding {
@@ -875,6 +888,11 @@
             .contact-form {
                 padding: 30px 25px;
             }
+
+            /* Menu mobile visualizzato */
+            .mobile-nav {
+                display: block; /* Mostra il menu mobile solo quando è necessario */
+            }
         }
 
         @media (max-width: 600px) {
@@ -888,7 +906,7 @@
             }
 
             #hero h2 {
-                font-size: 2.5em;
+                font-size: 2.2em; /* Ridotto ulteriormente per schermi molto piccoli */
             }
 
             #hero p {
@@ -964,12 +982,21 @@
             }
 
             .mobile-nav {
-                width: 100%;
-                right: -100vw;
+                width: 100%; /* Occupa tutta la larghezza dello schermo */
+                right: -100vw; /* Inizialmente fuori schermo a destra */
             }
 
             .mobile-nav.open {
                 right: 0;
+            }
+
+            /* Assicurati che l'header non si comprima troppo */
+            header .container {
+                padding: 0 15px; /* Riduci il padding orizzontale del container dell'header */
+            }
+
+            .header-logo .logo-text {
+                font-size: 1.4em; /* Riduci la dimensione del testo del logo su schermi molto piccoli */
             }
         }
     </style>
@@ -987,29 +1014,29 @@
                     <img src="https://i.imgur.com/y0IhBBR.png" alt="Logo Apocaliss">
                     <span class="logo-text">Apocaliss</span>
                 </a>
-                <nav class="main-nav">
-                    <ul class="nav-links">
-                        <li><a href="#features" data-lang-key="features">Caratteristiche</a></li>
-                        <li><a href="#examples" data-lang-key="examples">Esempi di Comandi</a></li>
-                        <li><a href="#testimonials" data-lang-key="testimonials">Testimonianze</a></li>
-                        <li><a href="#faq" data-lang-key="faq">FAQ</a></li>
-                        <li><a href="#contact" data-lang-key="contact">Contatti</a></li>
-                    </ul>
-                    <div class="nav-controls">
-                        <div class="lang-toggle">
-                            <span id="lang-it" class="active" data-lang="it">IT</span> / <span id="lang-en" data-lang="en">EN</span>
-                        </div>
-                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle tema chiaro/scuro">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                        <button class="hamburger" aria-label="Menu di navigazione">
-                            <span class="bar"></span>
-                            <span class="bar"></span>
-                            <span class="bar"></span>
-                        </button>
-                    </div>
-                </nav>
             </div>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#features" data-lang-key="features">Caratteristiche</a></li>
+                    <li><a href="#examples" data-lang-key="examples">Esempi di Comandi</a></li>
+                    <li><a href="#testimonials" data-lang-key="testimonials">Testimonianze</a></li>
+                    <li><a href="#faq" data-lang-key="faq">FAQ</a></li>
+                    <li><a href="#contact" data-lang-key="contact">Contatti</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <div class="lang-toggle">
+                        <span id="lang-it" class="active" data-lang="it">IT</span> / <span id="lang-en" data-lang="en">EN</span>
+                    </div>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle tema chiaro/scuro">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="hamburger" aria-label="Menu di navigazione">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -1100,22 +1127,18 @@
             <h2 class="section-title reveal" data-lang-key="testimonials-section-title">Cosa Dicono i Nostri Utenti</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-item reveal">
-                    <img src="https://via.placeholder.com/100/6a0dad/ffffff?text=Luca" alt="Avatar utente Luca" class="avatar">
                     <p class="quote" data-lang-key="testimonial1-text">"Apocaliss ha trasformato il mio server! La moderazione è impeccabile e i comandi di intrattenimento sono un successone, la mia community lo adora."</p>
                     <p class="author" data-lang-key="testimonial1-author">- Luca, Admin di "Gaming Central"</p>
                 </div>
                 <div class="testimonial-item reveal">
-                    <img src="https://via.placeholder.com/100/6a0dad/ffffff?text=Sarah" alt="Avatar utente Sarah" class="avatar">
                     <p class="quote" data-lang-key="testimonial2-text">"Facile da configurare, super potente e pieno di funzioni utili. Non potrei gestire il mio server Discord senza Apocaliss!"</p>
                     <p class="author" data-lang-key="testimonial2-author">- Sarah, Fondatrice di "Creative Hub"</p>
                 </div>
                 <div class="testimonial-item reveal">
-                    <img src="https://via.placeholder.com/100/6a0dad/ffffff?text=Marco" alt="Avatar utente Marco" class="avatar">
                     <p class="quote" data-lang-key="testimonial3-text">"Le statistiche sono fantastiche e il bot è incredibilmente stabile. Funziona sempre alla perfezione. Lo raccomando a tutti!"</p>
                     <p class="author" data-lang-key="testimonial3-author">- Marco, Mod del server "Tech Community"</p>
                 </div>
                  <div class="testimonial-item reveal">
-                    <img src="https://via.placeholder.com/100/6a0dad/ffffff?text=Anna" alt="Avatar utente Anna" class="avatar">
                     <p class="quote" data-lang-key="testimonial4-text">"Un bot indispensabile per qualsiasi server Discord serio. Funzionalità innovative e supporto eccellente. 5 stelle!"</p>
                     <p class="author" data-lang-key="testimonial4-author">- Anna, Gestore di "Art & Design"</p>
                 </div>
@@ -1181,7 +1204,6 @@
             <p>&copy; 2025 Apocaliss. Creato da Tempestosoh. Tutti i diritti riservati.</p>
             <div class="social-links">
                 <a href="https://discord.gg/YOUR_DISCORD_SERVER_INVITE" aria-label="Discord Support Server"><i class="fab fa-discord"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
@@ -1249,8 +1271,8 @@
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('open');
                 mobileNav.classList.toggle('open');
-                // Opzionale: impedisce lo scroll del body quando il menu mobile è aperto
-                document.body.classList.toggle('no-scroll');
+                // Impedisce lo scroll del body quando il menu mobile è aperto
+                document.body.classList.toggle('no-scroll', mobileNav.classList.contains('open'));
             });
 
             // Chiudi il menu mobile quando si clicca su un link
@@ -1262,10 +1284,12 @@
                 });
             });
 
-            // Chiudi il menu mobile cliccando fuori (solo su mobile/tablet)
+            // Chiudi il menu mobile cliccando fuori
             document.addEventListener('click', (event) => {
-                if (window.innerWidth <= 900 && mobileNav.classList.contains('open') &&
-                    !mobileNav.contains(event.target) && !hamburger.contains(event.target)) {
+                if (mobileNav.classList.contains('open') &&
+                    !mobileNav.contains(event.target) &&
+                    !hamburger.contains(event.target)
+                ) {
                     hamburger.classList.remove('open');
                     mobileNav.classList.remove('open');
                     document.body.classList.remove('no-scroll');
@@ -1292,7 +1316,7 @@
                     'feature1-title': 'Moderazione Avanzata',
                     'feature1-desc': 'Strumenti potenti come ban, kick, mute e auto-moderazione avanzata per mantenere il tuo server sicuro e ordinato.',
                     'feature2-title': 'Comandi di Intrattenimento',
-                    'feature2-desc': 'Mini- giochi divertenti e comandi per animare la tua community e migliorare l\'interazione.',
+                    'feature2-desc': 'Mini-giochi divertenti e comandi per animare la tua community e migliorare l\'interazione.',
                     'feature3-title': 'Utilità Personalizzabili',
                     'feature3-desc': 'Comandi utili e configurabili come prefissi, ruoli e automazioni per ogni esigenza del tuo server.',
                     'feature4-title': 'Statistiche Server',
